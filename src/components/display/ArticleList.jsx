@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Article from './ArticleMain';
 
 const ArticleList = ({ query, articles }) => {
-
+  console.log(articles);
   const articleElements = articles.map((article) => (
     <>
-      <div>You searched for {query}</div>
+
 
       <li key={article.id}>
         <Article
@@ -21,13 +21,16 @@ const ArticleList = ({ query, articles }) => {
 
   ));
 
-  return <ul>{articleElements}</ul>;
+  return <>
+    <div>You searched for {query}</div>
+    <ul>{articleElements}</ul>;
+  </>;
 
 };
 
 ArticleList.propTypes = {
+  query: PropTypes.string.isRequired,
   articles: PropTypes.arrayOf(PropTypes.shape({
-    query: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

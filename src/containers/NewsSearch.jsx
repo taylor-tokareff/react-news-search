@@ -10,12 +10,14 @@ export default class NewsSearch extends Component {
     loading: true,
   };
 
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+  handleSearch = async ({ target }) => {
+    this.setState({ [target.name]: target.value, loading: true });
+    const articles = await fetchArticles(this.state.query);
+    this.setState({ articles, loading: false });
   };
 
   async componentDidMount() {
-    const articles = await fetchArticles();
+    const articles = await fetchArticles(this.state.query);
     this.setState({ articles, loading: false });
   }
 
@@ -29,7 +31,7 @@ export default class NewsSearch extends Component {
       <>
         <SearchControls
           query={query}
-          onChange={this.handleChange}
+          onChange={this.handleSearch}
         />
 
         <ArticleList
