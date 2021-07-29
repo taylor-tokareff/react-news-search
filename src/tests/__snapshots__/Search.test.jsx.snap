@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchControls component renders SearchControls 1`] = `
+<DocumentFragment>
+  <label
+    for="query"
+  >
+    Search for article here
+  </label>
+  <input
+    id="query"
+    name="query"
+    placeholder="Search Here"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
